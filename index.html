@@ -5,6 +5,21 @@
   <BODY>
     <H1>レジェンダリーブックス</H1>
 
+    <h3> 管理人の読書履歴 </h3>
+    <div id="bookList" style="height: 300px; overflow-y:scroll;"> </div>
+
+    <script>
+      let content = fetch("https://kewaotonaki.github.io/ReadBooks/books_I_read.csv").then( (res) => {
+        if (!res.ok) {
+            throw new Error(`${res.status} ${res.statusText}`);
+        }
+        return res.text();
+      }).then( (list) => {
+        let elem = document.getElementById("bookList");
+        elem.innerText = list;
+      });
+    </script>
+
     <footer> Written by Kewa Otonaki 2025.11.10-</footer>
   </BODY>
 </HTML>
